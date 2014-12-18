@@ -1,0 +1,5 @@
+<input type="text" class="source"><br>
+<i class="icon-comment"></i> 
+<button class="btn copy copy_link"><i class="icon-plus"></i> Link</button>
+<button class="btn copy copy_embed"><i class="icon-plus"></i> Image</button>
+<button class="btn copy copy_linked_embed"><i class="icon-plus"></i> Linked Image</button>
