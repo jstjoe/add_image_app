@@ -1,7 +1,12 @@
 <br><br>
 <h4>Attachments</h4>
 {{#files}}
-  <img src="{{thumb}}" class="thumb"> {{name}}<br>
+  {{#if image}}
+    <img src="{{thumb}}" class="thumb">
+  {{else}}
+    <i class="icon-file thumb"></i>
+  {{/if}}
+  {{name}}<br>
   <i class="icon-comment"></i> 
   <button class="btn file copy copy_link" data-url="{{url}}" data-name="{{name}}">
     <i class="icon-plus"></i> Link
