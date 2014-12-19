@@ -1,5 +1,4 @@
 (function() {
-
   return {
     defaultState: 'loading',
     events: {
@@ -13,9 +12,7 @@
     },
     requests: {
       getAccountSettings: function() {
-        return {
-          url: '/api/v2/account/settings.json'
-        };
+        return { url: '/api/v2/account/settings.json' };
       }
     },
     created: function() {
@@ -55,7 +52,7 @@
           });
         }
       }.bind(this));
-      if(attachments[0]) { // if there are files attached show the attachments section and hide the button
+      if(attachments[0]) { // if there are files attached show the attachments section
         this.$('.attachments').show();
         var html = this.renderTemplate('attachments', {
           files: files,
@@ -93,8 +90,6 @@
           this.$('.attachments').html('');
           this.load(true);
         }
-        // debugger;
-        // clearInterval(this.interval);
       }.bind(this), 100);
     },
     copyLink: function(e) {
@@ -138,5 +133,4 @@
       };
     }
   };
-
 }());
