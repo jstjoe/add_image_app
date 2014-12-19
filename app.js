@@ -55,7 +55,7 @@
           });
         }
       }.bind(this));
-      if(files[0]) { // if there are files attached show the attachments section and hide the button
+      if(attachments[0]) { // if there are files attached show the attachments section and hide the button
         this.$('.attachments').show();
         var html = this.renderTemplate('attachments', {
           files: files,
@@ -69,7 +69,7 @@
     },
     reload: function(e) {
       this.interval = setInterval(function() {
-        console.log('re-checking attachments');
+        // console.log('re-checking attachments');
         var attachments = this.comment().attachments();
         // if they all have URLs clearTimeout and call this.load()
         var urls = _.map(attachments, function(attachment) {
@@ -84,13 +84,14 @@
         });
         var allLoaded = !_.contains(urls, false);
         var oneLoaded = _.contains(urls, true);
-        if(allLoaded) { // all attachments loaded
+        if(allLoaded) { // all attachments loaded, or none with none in progress
           clearInterval(this.interval);
           this.load(false);
         } else if (oneLoaded) { // at least one attachment loaded
           this.load(true);
-        } else { // none loaded
+        } else { // none loaded, some in progress
           this.$('.attachments').html('');
+          this.load(true);
         }
         // debugger;
         // clearInterval(this.interval);
