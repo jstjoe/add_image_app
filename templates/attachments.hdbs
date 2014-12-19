@@ -1,3 +1,4 @@
+<br><br>
 <h4>Attachments</h4>
 {{#files}}
   <img src="{{thumb}}" class="thumb"> {{name}}<br>

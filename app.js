@@ -16,33 +16,62 @@
         files = [];
       _.each(attachments, function(file) {
         var img,
-          type = file.contentType();
+          type = file.contentType(),
+          url = file.contentUrl();
         if(_.contains(["image/jpeg","image/gif","image/png","image/tiff","image/svg+xml"], type)) {
           img = true;
         } else {
           img = false;
         }
-        files.push({
-          url: file.contentUrl(),
-          name: file.filename(),
-          thumb: file.thumbnailUrl(),
-          image: img
-        });
+        if(url) {
+          files.push({
+            url: file.contentUrl(),
+            name: file.filename(),
+            thumb: file.thumbnailUrl(),
+            image: img
+          });
+        }
       }.bind(this));
       if(files[0]) { // if there are files attached show the attachments section and hide the button
         this.$('.attachments').show();
-        this.$('.list_attachments').hide();
+        // this.$('.list_attachments').hide();
         var html = this.renderTemplate('attachments', {
           files: files
         });
         this.$('.attachments').html(html);
       } else {
-        this.reload();
+        // this.reload();
+        this.$('.attachments').hide();
       }
     },
     reload: function(e) {
-      this.$('.list_attachments').show();
+      // this.$('.list_attachments').show();
       this.$('.attachments').hide();
+      this.interval = setInterval(function() {
+        console.log('re-checking attachments');
+        var attachments = this.comment().attachments();
+        // if they all have URLs clearTimeout and call this.load()
+        var urls = _.map(attachments, function(attachment) {
+          var url = attachment.contentUrl();
+          var bool;
+          if(url) {
+            bool = true;
+          } else {
+            bool = false;
+          }
+          return bool;
+        });
+        var allLoaded = !_.contains(urls, false);
+        var oneLoaded = _.contains(urls, true);
+        if(allLoaded) {
+          clearInterval(this.interval);
+          this.load();
+        } else if (oneLoaded) {
+          this.load();
+        }
+        // debugger;
+        // clearInterval(this.interval);
+      }.bind(this), 100);
     },
     copyLink: function(e) {
       var link = this.getSrc(e),

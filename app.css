@@ -6,6 +6,7 @@
   max-height: 40px;
   max-width: 40px;
   vertical-align: middle;
+  margin-bottom: 5px;
 }
 button.file {
   padding: 5px;
