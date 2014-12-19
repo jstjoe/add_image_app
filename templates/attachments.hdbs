@@ -16,3 +16,4 @@
   {{/if}}
   <br><br>
 {{/files}}
+{{#if incomplete}}{{spinner "dotted"}}{{/if}}

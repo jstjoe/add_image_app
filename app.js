@@ -34,7 +34,7 @@
         }
       });
     },
-    load: function() {
+    load: function(incomplete) {
       var attachments = this.comment().attachments(),
         files = [];
       _.each(attachments, function(file) {
@@ -57,19 +57,17 @@
       }.bind(this));
       if(files[0]) { // if there are files attached show the attachments section and hide the button
         this.$('.attachments').show();
-        // this.$('.list_attachments').hide();
         var html = this.renderTemplate('attachments', {
-          files: files
+          files: files,
+          incomplete: incomplete
         });
         this.$('.attachments').html(html);
       } else {
-        // this.reload();
-        this.$('.attachments').hide();
+        // otherwise clear the attachments section
+        this.$('.attachments').html('');
       }
     },
     reload: function(e) {
-      // this.$('.list_attachments').show();
-      this.$('.attachments').hide();
       this.interval = setInterval(function() {
         console.log('re-checking attachments');
         var attachments = this.comment().attachments();
@@ -86,11 +84,13 @@
         });
         var allLoaded = !_.contains(urls, false);
         var oneLoaded = _.contains(urls, true);
-        if(allLoaded) {
+        if(allLoaded) { // all attachments loaded
           clearInterval(this.interval);
-          this.load();
-        } else if (oneLoaded) {
-          this.load();
+          this.load(false);
+        } else if (oneLoaded) { // at least one attachment loaded
+          this.load(true);
+        } else { // none loaded
+          this.$('.attachments').html('');
         }
         // debugger;
         // clearInterval(this.interval);
