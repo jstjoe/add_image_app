@@ -65,7 +65,7 @@
       }
     },
     reload: function(e) {
-      this.interval = setInterval(function() {
+      var interval = setInterval(function() {
         // console.log('re-checking attachments');
         var attachments = this.comment().attachments();
         // if they all have URLs clearTimeout and call this.load()
@@ -82,7 +82,7 @@
         var allLoaded = !_.contains(urls, false);
         var oneLoaded = _.contains(urls, true);
         if(allLoaded) { // all attachments loaded, or none with none in progress
-          clearInterval(this.interval);
+          clearInterval(interval);
           this.load(false);
         } else if (oneLoaded) { // at least one attachment loaded
           this.load(true);
