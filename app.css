@@ -1,4 +1,12 @@
-.source {
+.source, .text {
   width: 95%;
   margin-bottom: 10px;
+}
+.thumb {
+  max-height: 40px;
+  max-width: 40px;
+  vertical-align: middle;
+}
+button.file {
+  padding: 5px;
 }
