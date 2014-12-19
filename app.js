@@ -1,15 +1,38 @@
 (function() {
 
   return {
-    defaultState: 'links',
+    defaultState: 'loading',
     events: {
-      'app.created':'load',
+      'app.created':'created',
       'comment.attachments.changed':'reload',
       // click events
       'click .list_attachments':'load',
       'click .copy_link':'copyLink',
       'click .copy_embed':'copyEmbed',
       'click .copy_linked_embed':'copyLinkedEmbed'
+    },
+    requests: {
+      getAccountSettings: function() {
+        return {
+          url: '/api/v2/account/settings.json'
+        };
+      }
+    },
+    created: function() {
+      // get account settings and throw error if markdown not enabled
+      this.ajax('getAccountSettings').done(function(response) {
+        var markdown = response.settings.tickets.markdown_ticket_comments;
+        if(!markdown) {
+          // show error and exit
+          services.notify('<strong>Markdown Disabled</strong> Your account must have Markdown enabled to make use of the Markdown Link app.', 'error');
+          // '/agent/admin/tickets'
+          this.hide();
+          return;
+        } else {
+          this.switchTo('links');
+          this.load();
+        }
+      });
     },
     load: function() {
       var attachments = this.comment().attachments(),
