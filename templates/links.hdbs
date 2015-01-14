@@ -19,8 +19,8 @@
 <button class="btn h3" rel="tooltip" title="Header 3">h3</button>
 <button class="btn h4" rel="tooltip" title="Header 4">h4</button>
 <button class="btn h5" rel="tooltip" title="Header 5">h5</button>
-{{/if}}
 <hr>
+{{/if}}
 <h5>Links &amp; Images</h5>
 <input type="text" class="source" placeholder="URL of image or link"><br>
 <input type="text" class="text" placeholder="Text (optional)"><br>

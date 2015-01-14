@@ -4,7 +4,6 @@
     events: {
       'app.created':'created',
       'comment.attachments.changed':'reload',
-
       // click events
       'click .list_attachments':'load', // this could be removed
       'click .clear':'clearComment',
@@ -219,7 +218,6 @@
       var markdown = '##### {header}';
       this.pasteComment(markdown);
     },
-
     pasteComment: function(markdown) {
       // copies the existing comment, appends two line breaks and the markdown, then sets the comment
       console.log('Adding: ' + markdown);
