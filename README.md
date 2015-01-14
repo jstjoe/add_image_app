@@ -1,6 +1,6 @@
 # Add an Image or Link
 
-Easily add a Markdown image or link by providing the URL and clicking a button.
+Easily add Markdown to your ticket comments without needing to learn the syntax. Embed images and links by providing the URL and clicking a button, or quickly embed attached files.
 
 Pull requests are welcome.
 
