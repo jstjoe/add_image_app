@@ -1,5 +1,5 @@
 <header>
   <span class="logo"/>
-  <h3><i class="icon-minus toggle_hide hide_icon"></i> {{setting "name"}}</h3>
+  <h3><i class="icon-minus toggle_hide hide_icon" rel="tooltip" title="Toggle the App"></i> {{setting "name"}}</h3>
 </header>
 <section data-main/>
