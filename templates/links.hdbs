@@ -6,7 +6,6 @@
 <button class="btn ordered" rel="tooltip" title="Ordered List"><i class="icon-th-list"></i></button>
 {{!-- <button class="btn"><i class="icon-cog nest"></i></button> --}}
 <button class="btn break" rel="tooltip" title="Page Break"><i class="icon-minus"></i></button>
-<button class="btn pull-right clear" rel="tooltip" title="Clear Comment"><i class="icon-trash"></i> Clear</button>
 <br>
 <br>
 <button class="btn blockQuote" rel="tooltip" title="Block Quote">Block Quote</button>
@@ -30,3 +29,5 @@
 <button class="btn copy copy_linked_embed"><i class="icon-plus"></i> Linked Image</button>
 <br><br>
 <div class="attachments well well-small hide"></div>
+<hr>
+<button class="btn pull-right clear" rel="tooltip" title="Clear Comment"><i class="icon-trash"></i> Clear Comment</button>

@@ -5,6 +5,8 @@
       'app.created':'created',
       'comment.attachments.changed':'reload',
       // click events
+      'click .hide_icon':'toggleHide',
+      'click .show_icon':'toggleShow',
       'click .list_attachments':'load', // this could be removed
       'click .clear':'clearComment',
         // text style
@@ -231,6 +233,18 @@
     clearComment: function(e) {
       if(e) {e.preventDefault();}
       this.comment().text('');
+    },
+    toggleHide: function(e) {
+      if(e) {e.preventDefault();}
+      this.$('section').hide();
+      this.$('i.toggle_hide').addClass('icon-plus show_icon');
+      this.$('i.toggle_hide').removeClass('icon-minus hide_icon');
+    },
+    toggleShow: function(e) {
+      if(e) {e.preventDefault();}
+      this.$('section').show();
+      this.$('i.toggle_hide').addClass('icon-minus hide_icon');
+      this.$('i.toggle_hide').removeClass('icon-plus show_icon');
     }
   };
 }());
