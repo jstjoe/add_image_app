@@ -1,4 +1,5 @@
 {{#if simple}}
+<h5>Text</h5>
 <button class="btn bold" rel="tooltip" title="Bold"><i class="icon-bold"></i></button>
 <button class="btn italic" rel="tooltip" title="Italic"><i class="icon-italic"></i></button>
 <button class="btn unordered" rel="tooltip" title="Unordered List"><i class="icon-list"></i></button>
@@ -20,6 +21,7 @@
 <button class="btn h5" rel="tooltip" title="Header 5">h5</button>
 {{/if}}
 <hr>
+<h5>Links &amp; Images</h5>
 <input type="text" class="source" placeholder="URL of image or link"><br>
 <input type="text" class="text" placeholder="Text (optional)"><br>
 <i class="icon-comment"></i> 

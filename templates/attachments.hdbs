@@ -1,4 +1,4 @@
-<h4>Attachments</h4>
+<h5>Attachments</h5>
 {{#files}}
   <hr>
   <span class="filename">

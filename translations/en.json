@@ -11,8 +11,8 @@
     },
     "parameters": {
       "simple": {
-        "label": "Simple Buttons?",
-        "helpText": "Include buttons for inserting simple markdown elements (beyond links)."
+        "label": "Include text buttons?",
+        "helpText": "Include buttons for inserting simple text markdown? (bold, italic, lists, etc)"
       }
     }
   },
