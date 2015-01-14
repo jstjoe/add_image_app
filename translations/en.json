@@ -8,6 +8,12 @@
     "name": {
       "value": "Buddha Machine",
       "title": "app name"
+    },
+    "parameters": {
+      "simple": {
+        "label": "Simple Buttons?",
+        "helpText": "Include buttons for inserting simple markdown elements (beyond links)."
+      }
     }
   },
 

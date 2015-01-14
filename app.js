@@ -7,6 +7,7 @@
 
       // click events
       'click .list_attachments':'load', // this could be removed
+      'click .clear':'clearComment',
         // text style
       'click .bold':'insertBold',
       'click .italic':'insertItalic',
@@ -46,7 +47,10 @@
           this.hide();
           return;
         } else {
-          this.switchTo('links'); // send the 'simple' setting
+          var simpleButtons = this.setting('simple');
+          this.switchTo('links', {
+            simple: simpleButtons
+          }); // send the 'simple' setting
           this.load();
         }
       });
@@ -218,12 +222,17 @@
 
     pasteComment: function(markdown) {
       // copies the existing comment, appends two line breaks and the markdown, then sets the comment
+      console.log('Adding: ' + markdown);
       var existingComment = this.comment().text();
       if (!existingComment) {
         this.comment().text(markdown);
       } else {
         this.comment().text(existingComment + '\n\n' + markdown);
       }
+    },
+    clearComment: function(e) {
+      if(e) {e.preventDefault();}
+      this.comment().text('');
     }
   };
 }());

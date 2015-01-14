@@ -14,7 +14,7 @@
     {
       "name":"simple",
       "type":"checkbox",
-      "default":true
+      "default":false
     }
   ]
 }

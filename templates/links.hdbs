@@ -1,23 +1,24 @@
-{{!-- {{#if setting "simple"}} --}}
-<button class="btn"><i class="icon-bold bold"></i></button>
-<button class="btn"><i class="icon-italic italic"></i></button>
-<button class="btn"><i class="icon-list unordered"></i></button>
-<button class="btn"><i class="icon-th-list ordered"></i></button>
+{{#if simple}}
+<button class="btn bold" rel="tooltip" title="Bold"><i class="icon-bold"></i></button>
+<button class="btn italic" rel="tooltip" title="Italic"><i class="icon-italic"></i></button>
+<button class="btn unordered" rel="tooltip" title="Unordered List"><i class="icon-list"></i></button>
+<button class="btn ordered" rel="tooltip" title="Ordered List"><i class="icon-th-list"></i></button>
 {{!-- <button class="btn"><i class="icon-cog nest"></i></button> --}}
-<button class="btn"><i class="icon-minus break"></i></button>
+<button class="btn break" rel="tooltip" title="Page Break"><i class="icon-minus"></i></button>
+<button class="btn pull-right clear" rel="tooltip" title="Clear Comment"><i class="icon-trash"></i> Clear</button>
 <br>
 <br>
-<button class="btn blockQuote">Block Quote</button>
-<button class="btn inlineCode">Inline Code</button>
-<button class="btn codeBlock">Code Block</button>
+<button class="btn blockQuote" rel="tooltip" title="Block Quote">Block Quote</button>
+<button class="btn inlineCode" rel="tooltip" title="Inline Code">Inline Code</button>
+<button class="btn codeBlock" rel="tooltip" title="Code Block">Code Block</button>
 <br>
 <br>
-<button class="btn h1">h1</button>
-<button class="btn h2">h2</button>
-<button class="btn h3">h3</button>
-<button class="btn h4">h4</button>
-<button class="btn h5">h5</button>
-{{!-- {{/if}} --}}
+<button class="btn h1" rel="tooltip" title="Header 1">h1</button>
+<button class="btn h2" rel="tooltip" title="Header 2">h2</button>
+<button class="btn h3" rel="tooltip" title="Header 3">h3</button>
+<button class="btn h4" rel="tooltip" title="Header 4">h4</button>
+<button class="btn h5" rel="tooltip" title="Header 5">h5</button>
+{{/if}}
 <hr>
 <input type="text" class="source" placeholder="URL of image or link"><br>
 <input type="text" class="text" placeholder="Text (optional)"><br>
