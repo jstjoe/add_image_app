@@ -1,13 +1,17 @@
-<br><br>
 <h4>Attachments</h4>
 {{#files}}
+  <hr>
+  <span class="filename">
+  {{!-- if attachment is an image show the thumbnail, otherwise show the file icon --}}
   {{#if image}}
     <img src="{{thumb}}" class="thumb">
   {{else}}
     <i class="icon-file thumb"></i>
   {{/if}}
-  {{name}}<br>
-  <i class="icon-comment"></i> 
+    {{name}}
+  </span>
+  <br>
+  <i class="icon-comment"></i>
   <button class="btn file copy copy_link" data-url="{{url}}" data-name="{{name}}">
     <i class="icon-plus"></i> Link
   </button>
@@ -19,6 +23,7 @@
       <i class="icon-plus"></i> Linked Image
     </button>
   {{/if}}
-  <br><br>
+  <br>
 {{/files}}
+{{!-- if loading of attachments is incomplete show the loading spinner --}}
 {{#if incomplete}}{{spinner "dotted"}}{{/if}}

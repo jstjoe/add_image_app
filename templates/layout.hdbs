@@ -1,4 +1,5 @@
-{{!-- <header>
+<header>
+  <span class="logo"/>
   <h3>{{setting "name"}}</h3>
-</header> --}}
+</header>
 <section data-main/>

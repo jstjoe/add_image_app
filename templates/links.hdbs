@@ -1,9 +1,29 @@
+{{!-- {{#if setting "simple"}} --}}
+<button class="btn"><i class="icon-bold bold"></i></button>
+<button class="btn"><i class="icon-italic italic"></i></button>
+<button class="btn"><i class="icon-list unordered"></i></button>
+<button class="btn"><i class="icon-th-list ordered"></i></button>
+{{!-- <button class="btn"><i class="icon-cog nest"></i></button> --}}
+<button class="btn"><i class="icon-minus break"></i></button>
+<br>
+<br>
+<button class="btn blockQuote">Block Quote</button>
+<button class="btn inlineCode">Inline Code</button>
+<button class="btn codeBlock">Code Block</button>
+<br>
+<br>
+<button class="btn h1">h1</button>
+<button class="btn h2">h2</button>
+<button class="btn h3">h3</button>
+<button class="btn h4">h4</button>
+<button class="btn h5">h5</button>
+{{!-- {{/if}} --}}
+<hr>
 <input type="text" class="source" placeholder="URL of image or link"><br>
 <input type="text" class="text" placeholder="Text (optional)"><br>
 <i class="icon-comment"></i> 
 <button class="btn copy copy_link"><i class="icon-plus"></i> Link</button>
 <button class="btn copy copy_embed"><i class="icon-plus"></i> Image</button>
 <button class="btn copy copy_linked_embed"><i class="icon-plus"></i> Linked Image</button>
-
-{{!-- <button class="btn list_attachments">Choose from Attachments</button> --}}
-<div class="attachments"></div>
+<br><br>
+<div class="attachments well well-small hide"></div>

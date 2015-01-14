@@ -11,3 +11,11 @@
 button.file {
   padding: 5px;
 }
+span.filename {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+i.icon-comment, i.icon-file {
+  margin-right: 10px;
+}

@@ -4,8 +4,28 @@
     events: {
       'app.created':'created',
       'comment.attachments.changed':'reload',
+
       // click events
-      'click .list_attachments':'load',
+      'click .list_attachments':'load', // this could be removed
+        // text style
+      'click .bold':'insertBold',
+      'click .italic':'insertItalic',
+        // lists
+      'click .unordered':'insertUnordered',
+      'click .ordered':'insertOrdered',
+      'click .nest':'insertNest',
+      'click .break':'insertBreak',
+        // quotes
+      'click .blockQuote':'insertBlockQuote',
+      'click .inlineCode':'insertInlineCode',
+      'click .codeBlock':'insertCodeBlock',
+        // headings
+      'click .h1':'insertH1',
+      'click .h2':'insertH2',
+      'click .h3':'insertH3',
+      'click .h4':'insertH4',
+      'click .h5':'insertH5',
+        // links
       'click .copy_link':'copyLink',
       'click .copy_embed':'copyEmbed',
       'click .copy_linked_embed':'copyLinkedEmbed'
@@ -26,7 +46,7 @@
           this.hide();
           return;
         } else {
-          this.switchTo('links');
+          this.switchTo('links'); // send the 'simple' setting
           this.load();
         }
       });
@@ -53,20 +73,20 @@
         }
       }.bind(this));
       if(attachments[0]) { // if there are files attached show the attachments section
-        this.$('.attachments').show();
         var html = this.renderTemplate('attachments', {
           files: files,
           incomplete: incomplete
         });
         this.$('.attachments').html(html);
+        this.$('.attachments').show();
       } else {
         // otherwise clear the attachments section
         this.$('.attachments').html('');
+        this.$('.attachments').hide();
       }
     },
     reload: function(e) {
       var interval = setInterval(function() {
-        // console.log('re-checking attachments');
         var attachments = this.comment().attachments();
         // if they all have URLs clearTimeout and call this.load()
         var urls = _.map(attachments, function(attachment) {
@@ -107,14 +127,6 @@
         markdown = helpers.fmt('[![%@](%@)](%@)', link.name, link.src, link.src);
       this.pasteComment(markdown);
     },
-    pasteComment: function(markdown) {
-      var existingComment = this.comment().text();
-      if (!existingComment) {
-        this.comment().text(markdown);
-      } else {
-        this.comment().text(existingComment + '\n\n' + markdown);
-      }
-    },
     getSrc: function(e) {
       var src,
         name;
@@ -131,6 +143,87 @@
         "src":src,
         "name":name
       };
+    },
+    // simple buttons
+    insertBold: function(e) {
+      if(e) {e.preventDefault();}
+      var markdown = '**{bold}**';
+      this.pasteComment(markdown);
+    },
+    insertItalic: function(e) {
+      if(e) {e.preventDefault();}
+      var markdown = '*{italic}*';
+      this.pasteComment(markdown);
+    },
+    insertUnordered: function(e) {
+      if(e) {e.preventDefault();}
+      var markdown = '\n* {item}\n* {item}\n* {item}';
+      this.pasteComment(markdown);
+    },
+    insertOrdered: function(e) {
+      if(e) {e.preventDefault();}
+      var markdown = '\n1. {item1}\n2. {item2}\n3. {item3}\n';
+      this.pasteComment(markdown);
+    },
+    // insertNest: function(e) {
+    //   if(e) {e.preventDefault();}
+    //   var markdown = '  ';
+    //   this.pasteComment(markdown);
+    // },
+    insertBreak: function(e) {
+      if(e) {e.preventDefault();}
+      var markdown = '---\n';
+      this.pasteComment(markdown);
+    },
+    insertBlockQuote: function(e) {
+      if(e) {e.preventDefault();}
+      var markdown = '\n> {quote}\n> {quote}';
+      this.pasteComment(markdown);
+    },
+    insertInlineCode: function(e) {
+      if(e) {e.preventDefault();}
+      var markdown = '`{code}`';
+      this.pasteComment(markdown);
+    },
+    insertCodeBlock: function(e) {
+      if(e) {e.preventDefault();}
+      var markdown = '```\n{code}\n```';
+      this.pasteComment(markdown);
+    },
+    insertH1: function(e) {
+      if(e) {e.preventDefault();}
+      var markdown = '# {header}';
+      this.pasteComment(markdown);
+    },
+    insertH2: function(e) {
+      if(e) {e.preventDefault();}
+      var markdown = '## {header}';
+      this.pasteComment(markdown);
+    },
+    insertH3: function(e) {
+      if(e) {e.preventDefault();}
+      var markdown = '### {header}';
+      this.pasteComment(markdown);
+    },
+    insertH4: function(e) {
+      if(e) {e.preventDefault();}
+      var markdown = '#### {header}';
+      this.pasteComment(markdown);
+    },
+    insertH5: function(e) {
+      if(e) {e.preventDefault();}
+      var markdown = '##### {header}';
+      this.pasteComment(markdown);
+    },
+
+    pasteComment: function(markdown) {
+      // copies the existing comment, appends two line breaks and the markdown, then sets the comment
+      var existingComment = this.comment().text();
+      if (!existingComment) {
+        this.comment().text(markdown);
+      } else {
+        this.comment().text(existingComment + '\n\n' + markdown);
+      }
     }
   };
 }());

@@ -1,5 +1,5 @@
 {
-  "name": "Markdown Links",
+  "name": "Insert Markdown",
   "author": {
     "name": "Joe McCarron",
     "email": "joe@zendesk.com",
@@ -8,6 +8,13 @@
   "defaultLocale": "en",
   "private": true,
   "location": ["ticket_sidebar","new_ticket_sidebar"],
-  "version": "1.0a",
-  "frameworkVersion": "1.0"
+  "version": "1.0.1",
+  "frameworkVersion": "1.0",
+  "parameters":[
+    {
+      "name":"simple",
+      "type":"checkbox",
+      "default":true
+    }
+  ]
 }
